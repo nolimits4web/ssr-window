@@ -1,0 +1,45 @@
+{
+  "name": "ssr-window",
+  "version": "1.0.0",
+  "description": "Better handling for window object in SSR environment",
+  "main": "dist/ssr-window.js",
+  "jsnext:main": "dist/ssr-window.esm.js",
+  "module": "dist/ssr-window.esm.js",
+  "scripts": {
+    "build-dev": "NODE_ENV=development gulp build",
+    "build-prod": "NODE_ENV=production gulp build",
+    "test": "npm run build-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nolimits4web/ssr-window.git"
+  },
+  "keywords": [
+    "ssr",
+    "window",
+    "document"
+  ],
+  "author": "Vladimir Kharlampidi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nolimits4web/ssr-window/issues"
+  },
+  "homepage": "https://github.com/nolimits4web/ssr-window",
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.2.0",
+    "gulp-header": "^2.0.1",
+    "gulp-modify-file": "^1.0.1",
+    "gulp-open": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "rollup-plugin-buble": "^0.19.1",
+    "rollup-stream": "^1.24.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
