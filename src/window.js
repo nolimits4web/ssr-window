@@ -25,7 +25,7 @@ if (typeof window === 'undefined') {
     Date() {},
     screen: {},
     setTimeout() {},
-    clearTimeout() {},
+    clearTimeout() {}
   };
 } else {
   // eslint-disable-next-line
