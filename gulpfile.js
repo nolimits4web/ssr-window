@@ -77,13 +77,13 @@ function es(cb) {
     sourcemap: env === 'development',
     banner,
   })
-  .pipe(source('ssr-window.js', './src'))
-  .pipe(buffer())
-  .pipe(rename('ssr-window.esm.js'))
-  .pipe(gulp.dest(`./${env === 'development' ? 'build' : 'dist'}/`))
-  .on('end', () => {
-    if (cb) cb();
-  });
+    .pipe(source('ssr-window.js', './src'))
+    .pipe(buffer())
+    .pipe(rename('ssr-window.esm.js'))
+    .pipe(gulp.dest(`./${env === 'development' ? 'build' : 'dist'}/`))
+    .on('end', () => {
+      if (cb) cb();
+    });
 }
 
 gulp.task('build', (cb) => {
