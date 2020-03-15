@@ -20,6 +20,12 @@ const doc = (typeof document === 'undefined') ? {
       initEvent() {},
     };
   },
+  createElementNS() {
+    return {};
+  },
+  importNode() {
+    return null;
+  },
   createElement() {
     return {
       children: [],
@@ -31,7 +37,9 @@ const doc = (typeof document === 'undefined') ? {
       },
     };
   },
+  
   location: { hash: '' },
+  
 } : document; // eslint-disable-line
 
 export default doc;
