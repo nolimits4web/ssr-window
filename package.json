@@ -1,6 +1,6 @@
 {
   "name": "ssr-window",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "description": "Better handling for window object in SSR environment",
   "main": "dist/ssr-window.js",
   "jsnext:main": "dist/ssr-window.esm.js",
@@ -16,7 +16,7 @@
     "check-format": "npm run prettier -- --list-different",
     "validate": "npm-run-all --parallel check-format lint build:dev",
     "release": "npm run validate && node ./scripts/release",
-    "test": "npm run validate"
+    "test": "npm run validate && node ./scripts/test"
   },
   "repository": {
     "type": "git",

@@ -8,7 +8,16 @@ const ssrWindow = {
   navigator: {
     userAgent: '',
   },
-  location: {},
+  location: {
+    hash: '',
+    host: '',
+    hostname: '',
+    href: '',
+    origin: '',
+    pathname: '',
+    protocol: '',
+    search: '',
+  },
   history: {},
   CustomEvent: function CustomEvent() {
     return this;

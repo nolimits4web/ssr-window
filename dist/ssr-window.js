@@ -1,5 +1,5 @@
 /**
- * SSR Window 2.0.0-beta.2
+ * SSR Window 2.0.0-beta.3
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -87,7 +87,16 @@
         navigator: {
             userAgent: '',
         },
-        location: {},
+        location: {
+            hash: '',
+            host: '',
+            hostname: '',
+            href: '',
+            origin: '',
+            pathname: '',
+            protocol: '',
+            search: '',
+        },
         history: {},
         CustomEvent: function CustomEvent() {
             return this;
