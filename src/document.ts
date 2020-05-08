@@ -1,4 +1,6 @@
-const originalDocument = typeof document !== 'undefined' ? document : {};
+import extend from './extend';
+
+const doc: Partial<Document> = typeof document !== 'undefined' ? document : {};
 
 const ssrDocument = {
   body: {},
@@ -6,7 +8,7 @@ const ssrDocument = {
   removeEventListener() {},
   activeElement: {
     blur() {},
-    nodeName: "",
+    nodeName: '',
   },
   querySelector() {
     return null;
@@ -33,13 +35,24 @@ const ssrDocument = {
       },
     };
   },
-  location: { hash: "" },
+  createElementNS() {
+    return {};
+  },
+  importNode() {
+    return null;
+  },
+  location: {
+    hash: '',
+    host: '',
+    hostname: '',
+    href: '',
+    origin: '',
+    pathname: '',
+    protocol: '',
+    search: '',
+  },
 };
 
-const doc: Partial<Document> = Object.keys(ssrDocument).reduce((prev, key) => {
-  if(prev[key] === void 0) prev[key] = ssrDocument[key];
-  return prev;
-}, originalDocument);
-
+extend(doc, ssrDocument);
 
 export default doc;

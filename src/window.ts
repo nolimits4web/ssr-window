@@ -1,6 +1,7 @@
+import extend from './extend';
 import document from './document';
 
-const originalWindow = typeof window !== 'undefined' ? window : {};
+const win: Partial<Window> = typeof window !== 'undefined' ? window : {};
 
 const ssrWindow = {
   document,
@@ -28,9 +29,6 @@ const ssrWindow = {
   clearTimeout() {},
 };
 
-const win: Partial<Window> = Object.keys(ssrWindow).reduce((prev, key) => {
-  if(prev[key] === void 0) prev[key] = ssrWindow[key];
-  return prev;
-}, originalWindow);
+extend(win, ssrWindow);
 
 export default win;

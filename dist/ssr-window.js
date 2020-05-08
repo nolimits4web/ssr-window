@@ -3,83 +3,118 @@
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
- * Copyright 2018, Vladimir Kharlampidi
+ * Copyright 2020, Vladimir Kharlampidi
  *
  * Licensed under MIT
  *
- * Released on: July 18, 2018
+ * Released on: May 8, 2020
  */
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.ssrWindow = {})));
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+    typeof define === 'function' && define.amd ? define(['exports'], factory) :
+    (global = global || self, factory(global.ssrWindow = {}));
 }(this, (function (exports) { 'use strict';
 
-var doc = (typeof document === 'undefined') ? {
-  body: {},
-  addEventListener: function addEventListener() {},
-  removeEventListener: function removeEventListener() {},
-  activeElement: {
-    blur: function blur() {},
-    nodeName: '',
-  },
-  querySelector: function querySelector() {
-    return null;
-  },
-  querySelectorAll: function querySelectorAll() {
-    return [];
-  },
-  getElementById: function getElementById() {
-    return null;
-  },
-  createEvent: function createEvent() {
-    return {
-      initEvent: function initEvent() {},
-    };
-  },
-  createElement: function createElement() {
-    return {
-      children: [],
-      childNodes: [],
-      style: {},
-      setAttribute: function setAttribute() {},
-      getElementsByTagName: function getElementsByTagName() {
-        return [];
-      },
-    };
-  },
-  location: { hash: '' },
-} : document; // eslint-disable-line
+    /* eslint-disable no-param-reassign */
+    function extend(target, src) {
+        Object.keys(src).forEach(function (key) {
+            if (typeof target[key] === 'undefined')
+                target[key] = src[key];
+            else if (typeof src[key] === 'object' &&
+                src[key].constructor === Object &&
+                Object.keys(src[key]).length > 0) {
+                extend(target[key], src[key]);
+            }
+        });
+    }
 
-var win = (typeof window === 'undefined') ? {
-  document: doc,
-  navigator: {
-    userAgent: '',
-  },
-  location: {},
-  history: {},
-  CustomEvent: function CustomEvent() {
-    return this;
-  },
-  addEventListener: function addEventListener() {},
-  removeEventListener: function removeEventListener() {},
-  getComputedStyle: function getComputedStyle() {
-    return {
-      getPropertyValue: function getPropertyValue() {
-        return '';
-      },
+    var doc = typeof document !== 'undefined' ? document : {};
+    var ssrDocument = {
+        body: {},
+        addEventListener: function () { },
+        removeEventListener: function () { },
+        activeElement: {
+            blur: function () { },
+            nodeName: '',
+        },
+        querySelector: function () {
+            return null;
+        },
+        querySelectorAll: function () {
+            return [];
+        },
+        getElementById: function () {
+            return null;
+        },
+        createEvent: function () {
+            return {
+                initEvent: function () { },
+            };
+        },
+        createElement: function () {
+            return {
+                children: [],
+                childNodes: [],
+                style: {},
+                setAttribute: function () { },
+                getElementsByTagName: function () {
+                    return [];
+                },
+            };
+        },
+        createElementNS: function () {
+            return {};
+        },
+        importNode: function () {
+            return null;
+        },
+        location: {
+            hash: '',
+            history: '',
+            host: '',
+            hostname: '',
+            href: '',
+            origin: '',
+            pathname: '',
+            protocol: '',
+            search: '',
+        },
     };
-  },
-  Image: function Image() {},
-  Date: function Date() {},
-  screen: {},
-  setTimeout: function setTimeout() {},
-  clearTimeout: function clearTimeout() {},
-} : window; // eslint-disable-line
+    extend(doc, ssrDocument);
 
-exports.window = win;
-exports.document = doc;
+    var win = typeof window !== 'undefined' ? window : {};
+    var ssrWindow = {
+        document: doc,
+        navigator: {
+            userAgent: '',
+        },
+        location: {},
+        history: {},
+        CustomEvent: function CustomEvent() {
+            return this;
+        },
+        addEventListener: function () { },
+        removeEventListener: function () { },
+        getComputedStyle: function () {
+            return {
+                getPropertyValue: function () {
+                    return '';
+                },
+            };
+        },
+        Image: function () { },
+        Date: function () { },
+        screen: {},
+        setTimeout: function () { },
+        clearTimeout: function () { },
+    };
+    extend(win, ssrWindow);
 
-Object.defineProperty(exports, '__esModule', { value: true });
+    exports.document = doc;
+    exports.extend = extend;
+    exports.window = win;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
+//# sourceMappingURL=ssr-window.js.map

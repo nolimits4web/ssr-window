@@ -3,20 +3,15 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "sourceMap": true,
-    "declaration": true,
     "importHelpers": true,
     "target": "ES5",
-    "module": "UMD",
-    "lib": [
-      "dom",
-      "ES2017",
-      "ES2019"
-    ],
+    "module": "ESNext",
+    "lib": ["dom", "ES2017", "ES2019"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "outDir": "build"
+    "rootDir": "src"
   },
   "exclude": ["node_modules", "build", "dist"],
   "files": ["./src/ssr-window.ts"],
-  "include": ["**/*.d.ts"]
+  "include": ["src"]
 }
