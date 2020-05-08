@@ -46,12 +46,10 @@ async function release() {
   await exec.promise('git push origin --tags');
 
   // eslint-disable-next-line
-  for (let project of projects) {
-    if (options.beta) {
-      await exec.promise('npm publish --tag beta');
-    } else {
-      await exec.promise('npm publish');
-    }
+  if (options.beta) {
+    await exec.promise('npm publish --tag beta');
+  } else {
+    await exec.promise('npm publish');
   }
 }
 
