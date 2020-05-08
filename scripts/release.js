@@ -37,6 +37,8 @@ async function release() {
     JSON.stringify(pkg, null, 2),
   );
 
+  await exec.promise('npm run build:prod');
+
   await exec.promise('git pull');
   await exec.promise('npm i');
   await exec.promise('git add .');
