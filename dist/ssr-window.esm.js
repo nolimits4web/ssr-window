@@ -1,5 +1,5 @@
 /**
- * SSR Window 1.0.1
+ * SSR Window 2.0.0-beta.2
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -64,7 +64,6 @@ var ssrDocument = {
     },
     location: {
         hash: '',
-        history: '',
         host: '',
         hostname: '',
         href: '',
