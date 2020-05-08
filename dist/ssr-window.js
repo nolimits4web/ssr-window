@@ -1,5 +1,5 @@
 /**
- * SSR Window 2.0.0-beta.3
+ * SSR Window 2.0.0-beta.4
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
