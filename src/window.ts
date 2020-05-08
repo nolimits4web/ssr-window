@@ -1,6 +1,8 @@
 import document from './document';
 
-const win = (typeof window === 'undefined') ? {
+const originalWindow = typeof window !== 'undefined' ? window : {};
+
+const ssrWindow = {
   document,
   navigator: {
     userAgent: '',
@@ -24,6 +26,11 @@ const win = (typeof window === 'undefined') ? {
   screen: {},
   setTimeout() {},
   clearTimeout() {},
-} : window; // eslint-disable-line
+};
+
+const win: Partial<Window> = Object.keys(ssrWindow).reduce((prev, key) => {
+  if(prev[key] === void 0) prev[key] = ssrWindow[key];
+  return prev;
+}, originalWindow);
 
 export default win;
