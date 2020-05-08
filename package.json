@@ -1,6 +1,6 @@
 {
   "name": "ssr-window",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.2",
   "description": "Better handling for window object in SSR environment",
   "main": "dist/ssr-window.js",
   "jsnext:main": "dist/ssr-window.esm.js",
