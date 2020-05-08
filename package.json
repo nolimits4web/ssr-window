@@ -9,6 +9,7 @@
   "scripts": {
     "build:dev": "tsc --declarationDir build/types --emitDeclarationOnly --declaration true && NODE_ENV=development node ./scripts/build",
     "build:prod": "tsc --declarationDir dist/types --emitDeclarationOnly --declaration true && NODE_ENV=production node ./scripts/build",
+    "serve": "serve",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prettier": "prettier \"**/*.+(js|json|scss)\"",
     "format": "npm run prettier -- --write",
