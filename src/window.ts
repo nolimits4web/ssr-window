@@ -18,7 +18,12 @@ const ssrWindow = {
     protocol: '',
     search: '',
   },
-  history: {},
+  history: {
+    replaceState() {},
+    pushState() {},
+    go() {},
+    back() {},
+  },
   CustomEvent: function CustomEvent() {
     return this;
   },
@@ -36,6 +41,9 @@ const ssrWindow = {
   screen: {},
   setTimeout() {},
   clearTimeout() {},
+  matchMedia() {
+    return {};
+  },
 };
 
 extend(win, ssrWindow);
