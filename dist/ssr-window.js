@@ -1,5 +1,5 @@
 /**
- * SSR Window 2.0.0-beta.6
+ * SSR Window 2.0.0-beta.7
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -7,7 +7,7 @@
  *
  * Licensed under MIT
  *
- * Released on: May 8, 2020
+ * Released on: May 9, 2020
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -97,7 +97,12 @@
             protocol: '',
             search: '',
         },
-        history: {},
+        history: {
+            replaceState: function () { },
+            pushState: function () { },
+            go: function () { },
+            back: function () { },
+        },
         CustomEvent: function CustomEvent() {
             return this;
         },
@@ -115,6 +120,9 @@
         screen: {},
         setTimeout: function () { },
         clearTimeout: function () { },
+        matchMedia: function () {
+            return {};
+        },
     };
     extend(win, ssrWindow);
 

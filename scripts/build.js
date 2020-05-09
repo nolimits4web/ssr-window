@@ -16,9 +16,11 @@ const date = {
   year: new Date().getFullYear(),
 };
 
+const version = process.env.VERSION || pkg.version;
+
 const banner = `
 /**
- * SSR Window ${pkg.version}
+ * SSR Window ${version}
  * ${pkg.description}
  * ${pkg.homepage}
  *
