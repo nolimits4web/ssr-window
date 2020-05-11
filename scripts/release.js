@@ -29,6 +29,22 @@ async function release() {
         },
       ],
     },
+    {
+      type: 'list',
+      name: 'next',
+      message: 'Next?',
+      when: (opts) => opts.version.indexOf('next') >= 0,
+      choices: [
+        {
+          name: 'YES',
+          value: true,
+        },
+        {
+          name: 'NO',
+          value: false,
+        },
+      ],
+    },
   ]);
   pkg.version = options.version;
 
@@ -50,6 +66,8 @@ async function release() {
   // eslint-disable-next-line
   if (options.beta) {
     await exec.promise('npm publish --tag beta');
+  } else if (options.next) {
+    await exec.promise('npm publish --tag next');
   } else {
     await exec.promise('npm publish');
   }
