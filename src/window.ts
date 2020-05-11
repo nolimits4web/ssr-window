@@ -1,10 +1,8 @@
 import extend from './extend';
-import document from './document';
-
-const win: Partial<Window> = typeof window !== 'undefined' ? window : {};
+import { ssrDocument } from './document';
 
 const ssrWindow = {
-  document,
+  document: ssrDocument,
   navigator: {
     userAgent: '',
   },
@@ -46,6 +44,10 @@ const ssrWindow = {
   },
 };
 
-extend(win, ssrWindow);
+function getWindow() {
+  const win: Partial<Window> = typeof window !== 'undefined' ? window : {};
+  extend(win, ssrWindow);
+  return win;
+}
 
-export default win;
+export { getWindow, ssrWindow };

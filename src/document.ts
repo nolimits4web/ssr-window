@@ -1,7 +1,5 @@
 import extend from './extend';
 
-const doc: Partial<Document> = typeof document !== 'undefined' ? document : {};
-
 const ssrDocument = {
   body: {},
   addEventListener() {},
@@ -53,6 +51,11 @@ const ssrDocument = {
   },
 };
 
-extend(doc, ssrDocument);
+function getDocument() {
+  const doc: Partial<Document> =
+    typeof document !== 'undefined' ? document : {};
+  extend(doc, ssrDocument);
+  return doc;
+}
 
-export default doc;
+export { getDocument, ssrDocument };
