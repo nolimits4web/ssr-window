@@ -7,19 +7,17 @@
  *
  * Licensed under MIT
  *
- * Released on: May 9, 2020
+ * Released on: May 12, 2020
  */
 /* eslint-disable no-param-reassign */
 function extend(target, src) {
-    Object.keys(src).forEach(function (key) {
-        if (typeof target[key] === 'undefined')
-            target[key] = src[key];
-        else if (typeof src[key] === 'object' &&
-            src[key].constructor === Object &&
-            Object.keys(src[key]).length > 0) {
-            extend(target[key], src[key]);
-        }
-    });
+    if (target === void 0) { target = {}; }
+    if (src === void 0) { src = {}; }
+    Object.keys(src).reduce(function (prev, key) {
+        if (typeof prev[key] === 'undefined')
+            prev[key] = src[key];
+        return prev;
+    }, target);
 }
 
 var doc = typeof document !== 'undefined' ? document : {};
