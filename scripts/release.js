@@ -15,6 +15,22 @@ async function release() {
     },
     {
       type: 'list',
+      name: 'alpha',
+      message: 'Alpha?',
+      when: (opts) => opts.version.indexOf('alpha') >= 0,
+      choices: [
+        {
+          name: 'YES',
+          value: true,
+        },
+        {
+          name: 'NO',
+          value: false,
+        },
+      ],
+    },
+    {
+      type: 'list',
       name: 'beta',
       message: 'Beta?',
       when: (opts) => opts.version.indexOf('beta') >= 0,
@@ -66,7 +82,7 @@ async function release() {
   // eslint-disable-next-line
   if (options.beta) {
     await exec.promise('npm publish --tag beta');
-  } else if (options.next) {
+  } else if (options.alpha) {
     await exec.promise('npm publish --tag next');
   } else {
     await exec.promise('npm publish');
