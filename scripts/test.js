@@ -1,5 +1,7 @@
 /* eslint-disable */
-const { window, document } = require('../dist/ssr-window');
+const { getWindow, getDocument } = require('../dist/ssr-window.umd');
+const window = getWindow();
+const document = getDocument();
 
 const p = document.querySelectorAll('p');
 const div = document.createElement('div');

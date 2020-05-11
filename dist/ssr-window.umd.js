@@ -1,5 +1,5 @@
 /**
- * SSR Window 3.0.0-alpha.1
+ * SSR Window 3.0.0-alpha.2
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -141,4 +141,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=ssr-window.js.map
+//# sourceMappingURL=ssr-window.umd.js.map

@@ -43,11 +43,11 @@ function buildUMD() {
         strict: true,
         name: 'ssrWindow',
         format: 'umd',
-        file: path.resolve(__dirname, `../${outDir}/ssr-window.js`),
+        file: path.resolve(__dirname, `../${outDir}/ssr-window.umd.js`),
         sourcemap: true,
         sourcemapFile: path.resolve(
           __dirname,
-          `../${outDir}/ssr-window.js.map`,
+          `../${outDir}/ssr-window.umd.js.map`,
         ),
         banner,
       });
@@ -57,19 +57,19 @@ function buildUMD() {
       const minified = Terser.minify(result.code, {
         sourceMap: {
           content: result.map,
-          filename: `ssr-window.min.js`,
-          url: `ssr-window.min.js.map`,
+          filename: `ssr-window.umd.min.js`,
+          url: `ssr-window.umd.min.js.map`,
         },
         output: {
           preamble: banner,
         },
       });
       fs.writeFileSync(
-        path.resolve(__dirname, `../${outDir}/ssr-window.min.js`),
+        path.resolve(__dirname, `../${outDir}/ssr-window.umd.min.js`),
         minified.code,
       );
       fs.writeFileSync(
-        path.resolve(__dirname, `../${outDir}/ssr-window.min.js.map`),
+        path.resolve(__dirname, `../${outDir}/ssr-window.umd.min.js.map`),
         minified.map,
       );
     })
