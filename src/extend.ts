@@ -1,15 +1,9 @@
 /* eslint-disable no-param-reassign */
-function extend(target: any, src: any) {
-  Object.keys(src).forEach((key) => {
-    if (typeof target[key] === 'undefined') target[key] = src[key];
-    else if (
-      typeof src[key] === 'object' &&
-      src[key].constructor === Object &&
-      Object.keys(src[key]).length > 0
-    ) {
-      extend(target[key], src[key]);
-    }
-  });
+function extend(target: any = {}, src: any = {}) {
+  return Object.keys(src).reduce((prev, key) => {
+    if (typeof prev[key] === 'undefined') prev[key] = src[key];
+    return prev;
+  }, target);
 }
 
 export default extend;
