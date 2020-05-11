@@ -1,4 +1,4 @@
-import document from './document';
-import window from './window';
+import { getDocument, ssrDocument } from './document';
+import { getWindow, ssrWindow } from './window';
 import extend from './extend';
-export { window, document, extend };
+export { getDocument, ssrDocument, getWindow, ssrWindow, extend };

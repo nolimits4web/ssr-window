@@ -1,5 +1,5 @@
 /**
- * SSR Window 2.0.0-beta.7
+ * SSR Window 3.0.0-alpha.1
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -7,7 +7,7 @@
  *
  * Licensed under MIT
  *
- * Released on: May 9, 2020
+ * Released on: May 11, 2020
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -28,7 +28,6 @@
         });
     }
 
-    var doc = typeof document !== 'undefined' ? document : {};
     var ssrDocument = {
         body: {},
         addEventListener: function () { },
@@ -79,11 +78,14 @@
             search: '',
         },
     };
-    extend(doc, ssrDocument);
+    function getDocument() {
+        var doc = typeof document !== 'undefined' ? document : {};
+        extend(doc, ssrDocument);
+        return doc;
+    }
 
-    var win = typeof window !== 'undefined' ? window : {};
     var ssrWindow = {
-        document: doc,
+        document: ssrDocument,
         navigator: {
             userAgent: '',
         },
@@ -124,11 +126,17 @@
             return {};
         },
     };
-    extend(win, ssrWindow);
+    function getWindow() {
+        var win = typeof window !== 'undefined' ? window : {};
+        extend(win, ssrWindow);
+        return win;
+    }
 
-    exports.document = doc;
     exports.extend = extend;
-    exports.window = win;
+    exports.getDocument = getDocument;
+    exports.getWindow = getWindow;
+    exports.ssrDocument = ssrDocument;
+    exports.ssrWindow = ssrWindow;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
