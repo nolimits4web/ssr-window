@@ -1,6 +1,6 @@
 {
   "name": "ssr-window-src",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "description": "Better handling for window object in SSR environment",
   "scripts": {
     "build:dev": "tsc --declarationDir build/types --emitDeclarationOnly --declaration true && NODE_ENV=development node ./scripts/build",
