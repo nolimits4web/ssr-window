@@ -54,5 +54,4 @@ const ssrDocument = {
 };
 
 extend(doc, ssrDocument);
-
-export default doc;
+export { ssrDocument, doc };
