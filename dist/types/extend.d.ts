@@ -1,2 +1,2 @@
-declare function extend(target: any, src: any): void;
+declare function extend(target?: any, src?: any): void;
 export default extend;
