@@ -6,7 +6,7 @@ const typescript = require('@rollup/plugin-typescript');
 const Terser = require('terser');
 const pkg = require('../package.json');
 
-const outDir = process.env.NODE_ENV === 'production' ? 'dist' : 'build';
+const outDir = process.env.NODE_ENV === 'production' ? 'package' : 'build';
 
 const date = {
   day: new Date().getDate(),
@@ -31,7 +31,7 @@ const banner = `
  * Released on: ${date.month} ${date.day}, ${date.year}
  */
 `.trim();
-// tsc --declarationDir dist/types --declaration true
+
 function buildUMD() {
   rollup
     .rollup({

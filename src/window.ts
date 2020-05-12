@@ -45,7 +45,7 @@ const ssrWindow = {
 };
 
 function getWindow() {
-  const win: Partial<Window> = typeof window !== 'undefined' ? window : {};
+  const win: Window = typeof window !== 'undefined' ? window : ({} as Window);
   extend(win, ssrWindow);
   return win;
 }

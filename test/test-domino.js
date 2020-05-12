@@ -1,12 +1,13 @@
 /* eslint-disable */
+const domino = require('domino');
+const { getWindow, getDocument } = require('../package/ssr-window.umd');
+
 function test() {
-  const domino = require('domino');
-
   global.window = domino.createWindow('', 'http://example.com');
-  global.document = window.document;
+  global.document = global.window.document;
 
-  require('../dist/ssr-window');
-  // shouldn't throw an error
+  const window = getWindow();
+  const document = getDocument();
 }
 
 module.exports = test;

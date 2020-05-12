@@ -32,5 +32,5 @@ declare const ssrDocument: {
         search: string;
     };
 };
-declare function getDocument(): Partial<Document>;
+declare function getDocument(): Document;
 export { getDocument, ssrDocument };

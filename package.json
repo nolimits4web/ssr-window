@@ -1,14 +1,10 @@
 {
-  "name": "ssr-window",
+  "name": "ssr-window-src",
   "version": "3.0.0-alpha.2",
   "description": "Better handling for window object in SSR environment",
-  "main": "dist/ssr-window.js",
-  "jsnext:main": "dist/ssr-window.esm.js",
-  "module": "dist/ssr-window.esm.js",
-  "typings": "dist/types/ssr-window.d.ts",
   "scripts": {
     "build:dev": "tsc --declarationDir build/types --emitDeclarationOnly --declaration true && NODE_ENV=development node ./scripts/build",
-    "build:prod": "tsc --declarationDir dist/types --emitDeclarationOnly --declaration true && NODE_ENV=production node ./scripts/build",
+    "build:prod": "tsc --declarationDir package/types --emitDeclarationOnly --declaration true && NODE_ENV=production node ./scripts/build",
     "serve": "serve",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prettier": "prettier \"**/*.+(js|json|scss)\"",

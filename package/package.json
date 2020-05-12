@@ -1,0 +1,24 @@
+{
+  "name": "ssr-window",
+  "version": "3.0.0-alpha.2",
+  "description": "Better handling for window object in SSR environment",
+  "main": "ssr-window.umd.js",
+  "jsnext:main": "ssr-window.esm.js",
+  "module": "ssr-window.esm.js",
+  "typings": "types/ssr-window.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nolimits4web/ssr-window.git"
+  },
+  "keywords": [
+    "ssr",
+    "window",
+    "document"
+  ],
+  "author": "Vladimir Kharlampidi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nolimits4web/ssr-window/issues"
+  },
+  "homepage": "https://github.com/nolimits4web/ssr-window"
+}

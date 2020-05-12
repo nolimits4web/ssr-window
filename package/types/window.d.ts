@@ -65,5 +65,5 @@ declare const ssrWindow: {
     clearTimeout(): void;
     matchMedia(): {};
 };
-declare function getWindow(): Partial<Window>;
+declare function getWindow(): Window;
 export { getWindow, ssrWindow };

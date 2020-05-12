@@ -52,8 +52,8 @@ const ssrDocument = {
 };
 
 function getDocument() {
-  const doc: Partial<Document> =
-    typeof document !== 'undefined' ? document : {};
+  const doc: Document =
+    typeof document !== 'undefined' ? document : ({} as Document);
   extend(doc, ssrDocument);
   return doc;
 }

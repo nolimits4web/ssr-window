@@ -1,14 +1,15 @@
 /* eslint-disable */
-function test() {
-  const { JSDOM } = require('jsdom');
+const { JSDOM } = require('jsdom');
+const { getWindow, getDocument } = require('../package/ssr-window.umd');
 
+function test() {
   const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
 
   global.window = dom.window;
-  global.document = window.document;
+  global.document = global.window.document;
 
-  require('../dist/ssr-window');
-  // shouldn't throw an error
+  const window = getWindow();
+  const document = getDocument();
 }
 
 module.exports = test;
