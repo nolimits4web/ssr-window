@@ -1,5 +1,5 @@
 /**
- * SSR Window 2.0.0-beta.7
+ * SSR Window 2.0.0-beta.8
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -7,7 +7,7 @@
  *
  * Licensed under MIT
  *
- * Released on: May 9, 2020
+ * Released on: May 12, 2020
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -16,12 +16,20 @@
 }(this, (function (exports) { 'use strict';
 
     /* eslint-disable no-param-reassign */
+    function isObject(obj) {
+        return (obj !== null &&
+            typeof obj === 'object' &&
+            'constructor' in obj &&
+            obj.constructor === Object);
+    }
     function extend(target, src) {
+        if (target === void 0) { target = {}; }
+        if (src === void 0) { src = {}; }
         Object.keys(src).forEach(function (key) {
             if (typeof target[key] === 'undefined')
                 target[key] = src[key];
-            else if (typeof src[key] === 'object' &&
-                src[key].constructor === Object &&
+            else if (isObject(src[key]) &&
+                isObject(target[key]) &&
                 Object.keys(src[key]).length > 0) {
                 extend(target[key], src[key]);
             }
@@ -83,7 +91,7 @@
 
     var win = typeof window !== 'undefined' ? window : {};
     var ssrWindow = {
-        document: doc,
+        document: ssrDocument,
         navigator: {
             userAgent: '',
         },
