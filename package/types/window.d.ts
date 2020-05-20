@@ -1,3 +1,4 @@
+/// <reference types="node" />
 declare const ssrWindow: {
     document: {
         body: {};
@@ -64,6 +65,8 @@ declare const ssrWindow: {
     setTimeout(): void;
     clearTimeout(): void;
     matchMedia(): {};
+    requestAnimationFrame(callback: any): NodeJS.Timeout;
+    cancelAnimationFrame(id: any): void;
 };
 declare function getWindow(): Window;
 export { getWindow, ssrWindow };
