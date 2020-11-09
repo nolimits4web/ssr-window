@@ -1,5 +1,5 @@
 /**
- * SSR Window 3.0.0-alpha.4
+ * SSR Window 3.0.0
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
@@ -7,7 +7,7 @@
  *
  * Licensed under MIT
  *
- * Released on: May 20, 2020
+ * Released on: November 9, 2020
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
