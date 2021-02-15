@@ -3,16 +3,16 @@
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
- * Copyright 2020, Vladimir Kharlampidi
+ * Copyright 2021, Vladimir Kharlampidi
  *
  * Licensed under MIT
  *
- * Released on: November 9, 2020
+ * Released on: February 15, 2021
  */
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = global || self, factory(global.ssrWindow = {}));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ssrWindow = {}));
 }(this, (function (exports) { 'use strict';
 
     /* eslint-disable no-param-reassign */

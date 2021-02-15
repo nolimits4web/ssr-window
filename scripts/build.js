@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-const rollup = require('rollup');
-const resolve = require('@rollup/plugin-node-resolve');
+const { rollup } = require('rollup');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const typescript = require('@rollup/plugin-typescript');
 const Terser = require('terser');
 const pkg = require('../package.json');
@@ -32,75 +32,64 @@ const banner = `
  */
 `.trim();
 
-function buildUMD() {
-  rollup
-    .rollup({
-      input: path.resolve(__dirname, '../src/ssr-window.ts'),
-      plugins: [resolve(), typescript()],
-    })
-    .then((bundle) => {
-      return bundle.write({
-        strict: true,
-        name: 'ssrWindow',
-        format: 'umd',
-        file: path.resolve(__dirname, `../${outDir}/ssr-window.umd.js`),
-        sourcemap: true,
-        sourcemapFile: path.resolve(
-          __dirname,
-          `../${outDir}/ssr-window.umd.js.map`,
-        ),
-        banner,
-      });
-    })
-    .then((bundle) => {
-      const result = bundle.output[0];
-      const minified = Terser.minify(result.code, {
-        sourceMap: {
-          content: result.map,
-          filename: `ssr-window.umd.min.js`,
-          url: `ssr-window.umd.min.js.map`,
-        },
-        output: {
-          preamble: banner,
-        },
-      });
-      fs.writeFileSync(
-        path.resolve(__dirname, `../${outDir}/ssr-window.umd.min.js`),
-        minified.code,
-      );
-      fs.writeFileSync(
-        path.resolve(__dirname, `../${outDir}/ssr-window.umd.min.js.map`),
-        minified.map,
-      );
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+async function buildUMD() {
+  const bundle = await rollup({
+    input: path.resolve(__dirname, '../src/ssr-window.ts'),
+    plugins: [nodeResolve(), typescript()],
+  });
+  const { output } = await bundle.write({
+    strict: true,
+    name: 'ssrWindow',
+    format: 'umd',
+    file: path.resolve(__dirname, `../${outDir}/ssr-window.umd.js`),
+    sourcemap: true,
+    sourcemapFile: path.resolve(
+      __dirname,
+      `../${outDir}/ssr-window.umd.js.map`,
+    ),
+    banner,
+  });
+  const result = output[0];
+  const minified = await Terser.minify(result.code, {
+    sourceMap: {
+      content: result.map,
+      filename: `ssr-window.umd.min.js`,
+      url: `ssr-window.umd.min.js.map`,
+    },
+    output: {
+      preamble: banner,
+    },
+  });
+  fs.writeFileSync(
+    path.resolve(__dirname, `../${outDir}/ssr-window.umd.min.js`),
+    minified.code,
+  );
+  fs.writeFileSync(
+    path.resolve(__dirname, `../${outDir}/ssr-window.umd.min.js.map`),
+    minified.map,
+  );
 }
 
-function buildESM() {
-  rollup
-    .rollup({
-      input: path.resolve(__dirname, '../src/ssr-window.ts'),
-      plugins: [resolve(), typescript()],
-      onwarn() {
-        // eslint-disable-next-line
-        return;
-      },
-    })
-    .then((bundle) => {
-      return bundle.write({
-        strict: true,
-        format: 'esm',
-        file: path.resolve(__dirname, `../${outDir}/ssr-window.esm.js`),
-        sourcemap: false,
-        banner,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+async function buildESM() {
+  const bundle = await rollup({
+    input: path.resolve(__dirname, '../src/ssr-window.ts'),
+    plugins: [nodeResolve(), typescript()],
+    onwarn() {
+      // eslint-disable-next-line
+      return;
+    },
+  });
+  await bundle.write({
+    strict: true,
+    format: 'esm',
+    file: path.resolve(__dirname, `../${outDir}/ssr-window.esm.js`),
+    sourcemap: false,
+    banner,
+  });
 }
-
-buildUMD();
-buildESM();
+try {
+  buildUMD();
+  buildESM();
+} catch (err) {
+  console.log(err);
+}
