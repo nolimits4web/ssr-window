@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { rollup } = require('rollup');
-const { nodeResolve }  = require('@rollup/plugin-node-resolve');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const typescript = require('@rollup/plugin-typescript');
 const Terser = require('terser');
 const pkg = require('../package.json');
@@ -35,9 +35,9 @@ const banner = `
 async function buildUMD() {
   const bundle = await rollup({
     input: path.resolve(__dirname, '../src/ssr-window.ts'),
-    plugins: [nodeResolve (), typescript()],
+    plugins: [nodeResolve(), typescript()],
   });
-  const _bundle = await bundle.write({
+  const { output } = await bundle.write({
     strict: true,
     name: 'ssrWindow',
     format: 'umd',
@@ -49,7 +49,7 @@ async function buildUMD() {
     ),
     banner,
   });
-  const result = _bundle.output[0];
+  const result = output[0];
   const minified = await Terser.minify(result.code, {
     sourceMap: {
       content: result.map,
@@ -72,24 +72,24 @@ async function buildUMD() {
 
 async function buildESM() {
   const bundle = await rollup({
-      input: path.resolve(__dirname, '../src/ssr-window.ts'),
-      plugins: [nodeResolve (), typescript()],
-      onwarn() {
-        // eslint-disable-next-line
-        return;
-      },
-    })
-    await bundle.write({
-      strict: true,
-      format: 'esm',
-      file: path.resolve(__dirname, `../${outDir}/ssr-window.esm.js`),
-      sourcemap: false,
-      banner,
-    });
+    input: path.resolve(__dirname, '../src/ssr-window.ts'),
+    plugins: [nodeResolve(), typescript()],
+    onwarn() {
+      // eslint-disable-next-line
+      return;
+    },
+  });
+  await bundle.write({
+    strict: true,
+    format: 'esm',
+    file: path.resolve(__dirname, `../${outDir}/ssr-window.esm.js`),
+    sourcemap: false,
+    banner,
+  });
 }
-try{
+try {
   buildUMD();
   buildESM();
-}catch(err){
+} catch (err) {
   console.log(err);
 }
