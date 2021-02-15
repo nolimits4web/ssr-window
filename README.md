@@ -1,6 +1,6 @@
 # SSR Window
 
-Better handling for `window` and `documentt` object in SSR environment.
+Better handling for `window` and `document` object in SSR environment.
 
 This library doesn't implement the DOM (like JSDOM), it just patches (or creates `window` and `document` objects) to avoid them to fail (throw errors) during server-side rendering.
 
