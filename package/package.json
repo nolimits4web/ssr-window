@@ -3,7 +3,8 @@
   "version": "3.0.0",
   "description": "Better handling for window object in SSR environment",
   "exports": {
-    ".": "./ssr-window.esm.js"
+    ".": "./ssr-window.esm.js",
+    "./umd": "./ssr-window.umd.js"
   },
   "typings": "types/ssr-window.d.ts",
   "type": "module",
