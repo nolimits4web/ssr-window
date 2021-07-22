@@ -1,6 +1,6 @@
 # SSR Window
 
-Better handling for `window` and `documentt` object in SSR environment.
+Better handling for `window` and `document` object in SSR environment.
 
 This library doesn't implement the DOM (like JSDOM), it just patches (or creates `window` and `document` objects) to avoid them to fail (throw errors) during server-side rendering.
 
@@ -21,7 +21,10 @@ npm i ssr-window
 ## Usage
 
 ```js
-import { window, document } from 'ssr-window';
+import { getWindow, getDocument } from 'ssr-window';
+
+const window = getWindow();
+const document = getDocument();
 
 window.addEventListener('resize', () => {});
 
@@ -33,17 +36,17 @@ const div = document.querySelectorAll('div');
 If you rely on some window/document properties which are not included here, you can use `extend` helper to add them:
 
 ```js
-import { window, document, extend } from 'ssr-window';
+import { ssrWindow, ssrDocument, extend } from 'ssr-window';
 
 // add window.navigator.language
-extend(window, {
+extend(ssrWindow, {
   navigator: {
     language: 'en',
   },
 });
 
 // add document.body
-extend(document, {
+extend(ssrDocument, {
   body: {
     /* ... */
   },

@@ -1,13 +1,13 @@
 /**
- * SSR Window 3.0.0-alpha.4
+ * SSR Window 3.0.0
  * Better handling for window object in SSR environment
  * https://github.com/nolimits4web/ssr-window
  *
- * Copyright 2020, Vladimir Kharlampidi
+ * Copyright 2021, Vladimir Kharlampidi
  *
  * Licensed under MIT
  *
- * Released on: May 20, 2020
+ * Released on: February 15, 2021
  */
 /* eslint-disable no-param-reassign */
 function isObject(obj) {

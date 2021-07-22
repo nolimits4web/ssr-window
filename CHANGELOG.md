@@ -1,5 +1,16 @@
 # Change Log
 
+## [3.0.0](https://github.com/nolimits4web/ssr-window/compare/v1.0.1...v2.0.0) - Released on November 9, 2020
+
+- Now it uses getter functions for window and document to not to polute existing scope:
+
+  ```js
+  import { getWindow, getDocument } from 'ssr-window';
+
+  const window = getWindow();
+  const document = getDocument();
+  ```
+
 ## [2.0.0](https://github.com/nolimits4web/ssr-window/compare/v1.0.1...v2.0.0) - Released on May 12, 2020
 
 - Now it uses patching instead of creating window and document if they are already available
