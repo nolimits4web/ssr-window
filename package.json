@@ -10,7 +10,7 @@
     "prettier": "prettier \"**/*.+(js|json|scss)\"",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "test": "node ./test/test",
+    "test": "node ./test/test.mjs",
     "validate": "npm-run-all --parallel test check-format lint",
     "release": "npm run validate && node ./scripts/release"
   },

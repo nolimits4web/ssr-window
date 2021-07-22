@@ -1,5 +1,5 @@
 /* eslint-disable */
-const { getWindow, getDocument } = require('../package/ssr-window.umd');
+import { getWindow, getDocument } from '../package/ssr-window.esm.js';
 
 function test() {
   const window = getWindow();
@@ -17,4 +17,4 @@ function test() {
   // shouldn't throw an error
 }
 
-module.exports = test;
+export default test;

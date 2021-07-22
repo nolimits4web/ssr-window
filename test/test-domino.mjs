@@ -1,6 +1,6 @@
 /* eslint-disable */
-const domino = require('domino');
-const { getWindow, getDocument } = require('../package/ssr-window.umd');
+import domino from 'domino';
+import { getWindow, getDocument } from '../package/ssr-window.esm.js';
 
 function test() {
   global.window = domino.createWindow('', 'http://example.com');
@@ -10,4 +10,4 @@ function test() {
   const document = getDocument();
 }
 
-module.exports = test;
+export default test;

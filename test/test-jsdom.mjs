@@ -1,6 +1,6 @@
 /* eslint-disable */
-const { JSDOM } = require('jsdom');
-const { getWindow, getDocument } = require('../package/ssr-window.umd');
+import { JSDOM } from 'jsdom';
+import { getWindow, getDocument } from '../package/ssr-window.esm.js';
 
 function test() {
   const dom = new JSDOM(`<!DOCTYPE html><p>Hello world</p>`);
@@ -12,4 +12,4 @@ function test() {
   const document = getDocument();
 }
 
-module.exports = test;
+export default test;
