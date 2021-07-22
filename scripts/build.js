@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { rollup } = require('rollup');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { default: nodeResolve } = require('@rollup/plugin-node-resolve');
 const typescript = require('@rollup/plugin-typescript');
 const Terser = require('terser');
 const pkg = require('../package.json');
