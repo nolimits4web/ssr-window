@@ -4,7 +4,7 @@
     "noImplicitAny": false,
     "sourceMap": true,
     "importHelpers": true,
-    "target": "ES5",
+    "target": "ES6",
     "module": "ESNext",
     "lib": ["dom", "ES2017", "ES2019"],
     "skipLibCheck": true,
