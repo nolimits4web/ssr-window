@@ -1,6 +1,6 @@
 {
   "name": "ssr-window",
-  "version": "4.0.0-beta.2",
+  "version": "4.0.0-beta.3",
   "description": "Better handling for window object in SSR environment",
   "exports": {
     ".": "./ssr-window.esm.js"
