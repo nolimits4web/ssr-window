@@ -1,5 +1,11 @@
 # Change Log
 
+# [4.0.1](https://github.com/nolimits4web/ssr-window/compare/v4.0.0...v4.0.1) (2021-10-27)
+
+### Features
+
+- add "main" and "module" package.json fields ([bc2984a](https://github.com/nolimits4web/ssr-window/commit/bc2984aa787c6b2dc9f15d47805b36f7b26e23a2))
+
 ## [4.0.0](https://github.com/nolimits4web/ssr-window/compare/v3.0.0...v4.0.0) - Released on August 25, 2021
 
 - Increase build target to `es6`
