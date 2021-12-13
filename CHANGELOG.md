@@ -1,5 +1,11 @@
 # Change Log
 
+# [4.0.2](https://github.com/nolimits4web/ssr-window/compare/v4.0.1...v4.0.2) (2021-12-13)
+
+### Features
+
+- export `package.json` ([#18](https://github.com/nolimits4web/ssr-window/issues/18)) ([8a019fb](https://github.com/nolimits4web/ssr-window/commit/8a019fba12944134da6972f4d1c9a02c728ac0aa))
+
 # [4.0.1](https://github.com/nolimits4web/ssr-window/compare/v4.0.0...v4.0.1) (2021-10-27)
 
 ### Features
