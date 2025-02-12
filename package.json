@@ -1,6 +1,6 @@
 {
   "name": "ssr-window-src",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "description": "Better handling for window object in SSR environment",
   "scripts": {
     "build:dev": "tsc --declarationDir build/types --emitDeclarationOnly --declaration true && NODE_ENV=development node ./scripts/build",
@@ -35,6 +35,7 @@
     "@rollup/plugin-typescript": "^8.2.3",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
+    "conventional-changelog-cli": "^5.0.0",
     "domino": "^2.1.6",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -52,6 +53,5 @@
     "serve": "^11.3.2",
     "terser": "^5.38.2",
     "typescript": "^4.3.5"
-  },
-  "dependencies": {}
+  }
 }

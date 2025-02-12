@@ -1,5 +1,15 @@
 # Change Log
 
+# [5.0.0](https://github.com/nolimits4web/ssr-window/compare/v4.0.2...v5.0.0) (2025-02-12)
+
+### Bug Fixes
+
+- fix prototype pollution ([46468a4](https://github.com/nolimits4web/ssr-window/commit/46468a49edee76d60d6c0f380bcd78161472d874))
+
+### Features
+
+- update terser ([b866d0b](https://github.com/nolimits4web/ssr-window/commit/b866d0be1ba6bb6efac788d59719f90e181360c4))
+
 # [4.0.2](https://github.com/nolimits4web/ssr-window/compare/v4.0.1...v4.0.2) (2021-12-13)
 
 ### Features
