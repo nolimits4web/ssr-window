@@ -9,16 +9,19 @@ function isObject(obj) {
 }
 
 function extend(target: any = {}, src: any = {}) {
-  Object.keys(src).forEach((key) => {
-    if (typeof target[key] === 'undefined') target[key] = src[key];
-    else if (
-      isObject(src[key]) &&
-      isObject(target[key]) &&
-      Object.keys(src[key]).length > 0
-    ) {
-      extend(target[key], src[key]);
-    }
-  });
+  const noExtend = ['__proto__', 'constructor', 'prototype'];
+  Object.keys(src)
+    .filter((key) => noExtend.indexOf(key) < 0)
+    .forEach((key) => {
+      if (typeof target[key] === 'undefined') target[key] = src[key];
+      else if (
+        isObject(src[key]) &&
+        isObject(target[key]) &&
+        Object.keys(src[key]).length > 0
+      ) {
+        extend(target[key], src[key]);
+      }
+    });
 }
 
 export default extend;
