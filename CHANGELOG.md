@@ -1,5 +1,11 @@
 # Change Log
 
+# [5.0.1](https://github.com/nolimits4web/ssr-window/compare/v5.0.0...v5.0.1) (2025-06-27)
+
+### Bug Fixes
+
+- fix: Typescript type error
+
 # [5.0.0](https://github.com/nolimits4web/ssr-window/compare/v4.0.2...v5.0.0) (2025-02-12)
 
 ### Bug Fixes

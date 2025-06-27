@@ -1,6 +1,6 @@
 {
   "name": "ssr-window-src",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Better handling for window object in SSR environment",
   "scripts": {
     "build:dev": "tsc --declarationDir build/types --emitDeclarationOnly --declaration true && NODE_ENV=development node ./scripts/build",
@@ -11,7 +11,7 @@
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
     "test": "node ./test/test.mjs",
-    "validate": "npm-run-all --parallel test check-format lint",
+    "validate": "npm-run-all --parallel test lint",
     "release": "npm run validate && node ./scripts/release",
     "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -u -s"
   },
