@@ -6,7 +6,10 @@
   "module": "./ssr-window.esm.js",
   "exports": {
     "./package.json": "./package.json",
-    ".": "./ssr-window.esm.js"
+    ".": {
+      "default": "./ssr-window.esm.js",
+      "types": "./types/ssr-window.d.ts"
+    }
   },
   "typings": "types/ssr-window.d.ts",
   "type": "module",
