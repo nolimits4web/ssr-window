@@ -13,6 +13,7 @@
   },
   "typings": "types/ssr-window.d.ts",
   "type": "module",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nolimits4web/ssr-window.git"
