@@ -7,7 +7,7 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "import": "./ssr-window.esm.js",
+      "default": "./ssr-window.esm.js",
       "types": "./types/ssr-window.d.ts"
     }
   },
